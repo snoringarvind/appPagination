@@ -109,10 +109,10 @@ export class PaginationDirective implements OnInit {
             //order-2
             this.setNoBtns(this.totalPages, this.currentPage);
           } else {
-            const x = this.searchTermsArray;
-            if ([...x[0]].length === 1) {
-              this.lastStartIndex = 0;
-            }
+            // const x = this.searchTermsArray;
+            // if ([...x[0]].length === 1) {
+            this.lastStartIndex = 0;
+            // }
 
             //order-1
             this.setTotalPages(this.searchResults);
