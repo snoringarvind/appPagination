@@ -1,0 +1,142 @@
+/* <---------Pagination , everything inside pagination-container class > */
+
+.pagination-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+
+  --page-btn-dim: 35px;
+  --select-container-width: 60px;
+}
+
+.total-pages {
+  display: flex;
+  align-items: center;
+  color: #465775;
+  font-size: 12px;
+  font-family: "Krub", sans-serif;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.page-btn,
+.page-forward-btn,
+.page-left-btn,
+.page-right-btn,
+.page-backward-btn {
+  border-radius: 50%;
+  width: var(--page-btn-dim);
+  height: var(--page-btn-dim);
+  margin: 0 5px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+  font-family: "Krub", sans-serif;
+  background-color: hsl(0, 0%, 96%);
+}
+
+.page-btn {
+  color: #848484;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.page-backward-btn,
+.page-forward-btn {
+  font-size: 11px;
+  font-family: "Krub", sans-serif;
+  color: #848484;
+}
+
+.page-left-btn,
+.page-right-btn {
+  font-size: 18px;
+  font-family: "Krub", sans-serif;
+  color: #848484;
+}
+
+.page-btn.active-page {
+  background-color: rgb(2, 122, 217);
+  color: white;
+}
+
+/* ----- select page , everything inside select-container class---> */
+
+.select-container {
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  position: relative;
+  min-width: var(--select-container-width);
+  height: var(--page-btn-dim);
+  color: #848484;
+  font-family: "Krub", sans-serif;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.select {
+  position: absolute;
+  bottom: calc(var(--page-btn-dim) + 2px);
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 1px 0px 10px lightgray, -1px -1px 10px lightgray;
+}
+
+.option {
+  padding: 5px 0;
+  text-align: center;
+  color: #333333;
+  font-size: 12px;
+  font-family: "Krub", sans-serif;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: lightgray;
+}
+
+.option.selected {
+  background-color: #007ad9;
+  color: white;
+}
+.page-value-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.page-value-container:hover {
+  color: black;
+}
+
+.page-value {
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+}
+
+.expand-btn {
+  flex-basis: 40%;
+  text-align: center;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}

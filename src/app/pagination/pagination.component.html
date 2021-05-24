@@ -1,0 +1,56 @@
+<div class="pagination-container">
+  <div class="total-pages">
+    Total: <span> {{ names.length }} </span>
+  </div>
+  <div
+    class="pagination"
+    appPagination
+    #pagination="appPagination"
+    (newRules)="newRulesCB($event)"
+    [OgValues]="names"
+    [searchTerms]="searchTerms"
+    [searchObservable]="searchObservable"
+  >
+    <button (click)="pagination.first()" class="page-backward-btn"><<</button>
+    <button (click)="pagination.prev()" class="page-left-btn"><</button>
+
+    <div *ngFor="let number of numbers">
+      <button
+        (click)="pagination.OnClick(number, $event)"
+        [ngClass]="{
+          'active-page': currentPage === number,
+          'page-btn': true
+        }"
+      >
+        {{ number }}
+      </button>
+    </div>
+
+    <button (click)="pagination.next()" class="page-right-btn">></button>
+    <button (click)="pagination.last()" class="page-forward-btn">>></button>
+
+    <div class="select-container" (click)="setShowSelect()">
+      <div class="page-value-container">
+        <div class="page-value">{{ rulesPerPage }}</div>
+        <div class="expand-btn">l</div>
+      </div>
+      <div *ngIf="showSelect" class="select">
+        <div
+          [attr.data-value]="[i]"
+          *ngFor="let i of selectArr"
+          (click)="pagination.onRulePerPageChange($event)"
+          [ngClass]="{
+            selected: rulesPerPage === i,
+            option: 'true'
+          }"
+        >
+          {{ i }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <input #searchBox (input)="search(searchBox.value)" />
+</div>

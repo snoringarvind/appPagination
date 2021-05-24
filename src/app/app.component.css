@@ -1,0 +1,22 @@
+.table {
+  display: flex;
+  width: 300px;
+}
+
+.sr-no {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  margin-bottom: -1px;
+  padding: 10px;
+}
+
+.name {
+  flex-basis: 80%;
+  padding-left: 50px;
+  border: 1px solid;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  padding: 10px;
+}
