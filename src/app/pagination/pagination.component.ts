@@ -1,6 +1,8 @@
+import { chainedInstruction } from '@angular/compiler/src/render3/view/util';
 import {
   Component,
   EventEmitter,
+  HostListener,
   Input,
   OnChanges,
   OnInit,
@@ -75,5 +77,7 @@ export class PaginationComponent implements OnInit {
     this.rulesPerPage = val.rulesPerPage;
     this.selectArr = val.selectArr;
     this.onValuesChange.emit(val.values);
+
+    console.log('asasas', this.currentPage);
   }
 }

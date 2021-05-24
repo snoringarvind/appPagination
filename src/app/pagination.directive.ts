@@ -1,4 +1,6 @@
 import {
+  ContentChild,
+  ContentChildren,
   Directive,
   ElementRef,
   EventEmitter,
@@ -7,7 +9,9 @@ import {
   OnChanges,
   OnInit,
   Output,
+  Renderer2,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { last } from 'rxjs/operators';
@@ -17,7 +21,7 @@ import { last } from 'rxjs/operators';
   exportAs: 'appPagination',
 })
 export class PaginationDirective implements OnInit {
-  constructor() {}
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
   // a temporary array to hold values, since it will change because of slicing for pagination
   values: any = [];
@@ -71,48 +75,54 @@ export class PaginationDirective implements OnInit {
   ngOnInit() {
     this.initOgValues(this.OgValues);
 
-    this.searchTerms.subscribe((term) => {
-      if (term && this.searchTermsArray.length == 0) {
-        this.lastSearchPage = this.currentPage;
-        this.lastSearchStartIndex = this.lastStartIndex;
+    if (this.searchTerms && this.searchObservable) {
+      try {
+        this.searchTerms.subscribe((term) => {
+          if (term && this.searchTermsArray.length == 0) {
+            this.lastSearchPage = this.currentPage;
+            this.lastSearchStartIndex = this.lastStartIndex;
+          }
+          if (term == '') {
+            this.searchTermsArray = [];
+          } else {
+            this.searchTermsArray[0] = term;
+          }
+        });
+
+        this.searchObservable.subscribe((res) => {
+          this.currentPage = 1;
+          this.searchResults = res;
+
+          if (this.searchTermsArray.length == 0) {
+            this.currentPage = this.lastSearchPage;
+            this.lastStartIndex = this.lastSearchStartIndex;
+            this.searchResults = this.OgValues;
+
+            //order-1
+            this.setTotalPages(this.searchResults);
+
+            //order-2
+            this.setNoBtns(this.totalPages, this.currentPage);
+          } else {
+            const x = this.searchTermsArray;
+            if ([...x[0]].length === 1) {
+              this.lastStartIndex = 0;
+            }
+
+            //order-1
+            this.setTotalPages(this.searchResults);
+
+            //order-2
+            this.setNoBtns(this.totalPages, 1);
+          }
+
+          //order-3
+          this.sliceValues(this.searchResults);
+        });
+      } catch (err) {
+        console.log(err);
       }
-      if (term == '') {
-        this.searchTermsArray = [];
-      } else {
-        this.searchTermsArray[0] = term;
-      }
-    });
-
-    this.searchObservable.subscribe((res) => {
-      this.currentPage = 1;
-      this.searchResults = res;
-
-      if (this.searchTermsArray.length == 0) {
-        this.currentPage = this.lastSearchPage;
-        this.lastStartIndex = this.lastSearchStartIndex;
-        this.searchResults = this.OgValues;
-
-        //order-1
-        this.setTotalPages(this.searchResults);
-
-        //order-2
-        this.setNoBtns(this.totalPages, this.currentPage);
-      } else {
-        const x = this.searchTermsArray;
-        if ([...x[0]].length === 1) {
-          this.lastStartIndex = 0;
-        }
-
-        //order-1
-        this.setTotalPages(this.searchResults);
-
-        //order-2
-        this.setNoBtns(this.totalPages, 1);
-      }
-
-      //order-3
-      this.sliceValues(this.searchResults);
-    });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -263,5 +273,47 @@ export class PaginationDirective implements OnInit {
       this.setTotalPages(this.searchResults);
       this.sliceValues(this.searchResults);
     }
+  }
+
+  // @HostListener('change', ['$event.target.value']) onChange(val: string) {
+  //   if (!Number(val)) {
+  //     return;
+  //   } else if ([...val][0] === '+' || [...val][0] === '-') {
+  //     return;
+  //   }
+
+  //   let pageno;
+
+  //   if (+val > this.totalPages) {
+  //     pageno = this.totalPages;
+  //   } else {
+  //     pageno = +val;
+  //   }
+
+  //   this.setPage(pageno);
+
+  //   console.log(this.elRef.nativeElement);
+  //   console.log(this.elRef);
+  //   this.renderer.setValue(this.elRef.nativeElement, String(pageno));
+  // }
+
+  change(el: any) {
+    const val = el.target.value;
+    if (!Number(val)) {
+      return;
+    } else if ([...val][0] === '+' || [...val][0] === '-') {
+      return;
+    }
+
+    let pageno;
+
+    if (+val > this.totalPages) {
+      pageno = this.totalPages;
+    } else {
+      pageno = +val;
+    }
+
+    this.setPage(pageno);
+    this.renderer.setProperty(el.srcElement, 'value', pageno);
   }
 }
