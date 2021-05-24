@@ -75,6 +75,7 @@ export class PaginationDirective implements OnInit {
 
   ngOnInit() {
     if (this.pageRange) {
+      this.pageRange = this.pageRange.sort((a, b) => a - b);
       this.rulesPerPage = this.pageRange[0];
     }
     this.initOgValues(this.OgValues);
