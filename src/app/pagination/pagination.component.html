@@ -9,9 +9,10 @@
     appPagination
     #pagination="appPagination"
     (newRules)="newRulesCB($event)"
-    [OgValues]="names"
+    [valuesArr]="names"
     [searchTerms]="searchTerms"
     [searchObservable]="searchObservable"
+    [pageRangeArr]="[10, 20, 30, 40, 50]"
   >
     <button (click)="pagination.first()" class="page-backward-btn"><<</button>
     <button (click)="pagination.prev()" class="page-left-btn"><</button>

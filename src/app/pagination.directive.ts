@@ -67,13 +67,18 @@ export class PaginationDirective implements OnInit {
   lastSearchStartIndex!: number;
 
   // a permanent array to hold values, since the values[] array will change when we use splice for pagination.
-  @Input() OgValues!: any;
+  @Input('valuesArr') OgValues!: any;
   @Input() searchTerms!: Observable<any>;
   @Input() searchObservable!: Observable<any>;
+  @Input('pageRangeArr') pageRange!: number[];
   @Output() newRules = new EventEmitter();
 
   ngOnInit() {
+    if (this.pageRange) {
+      this.rulesPerPage = this.pageRange[0];
+    }
     this.initOgValues(this.OgValues);
+    console.log(this.pageRange);
 
     if (this.searchTerms && this.searchObservable) {
       try {
@@ -158,26 +163,30 @@ export class PaginationDirective implements OnInit {
 
   // To set a range for <select> in html
   setSelectArr() {
-    const defRulesPerPage = [5, 10, 25, 50, 100, 250, 500];
+    if (!this.pageRange) {
+      this.pageRange = [5, 10, 25, 50, 100, 250, 500];
+    }
     this.selectArr = [];
 
     let x = this.OgValues.length - this.lastStartIndex;
 
     // let last = this.currentPage * this.rulesPerPage;
 
-    for (let i = 0; i < defRulesPerPage.length; i++) {
-      if (defRulesPerPage[i] >= x) {
-        this.selectArr.push(defRulesPerPage[i]);
+    for (let i = 0; i < this.pageRange.length; i++) {
+      if (this.pageRange[i] >= x) {
+        this.selectArr.push(this.pageRange[i]);
         break;
       } else {
-        this.selectArr.push(defRulesPerPage[i]);
+        this.selectArr.push(this.pageRange[i]);
       }
     }
 
+    console.log('current pages', this.currentPage);
+
     this.newRules.emit({
-      values: this.values,
-      selectArr: this.selectArr,
-      numbers: this.numbers,
+      valuesArr: this.values,
+      newPageRangeArr: this.selectArr,
+      btnNosArr: this.numbers,
       rulesPerPage: this.rulesPerPage,
       currentPage: this.currentPage,
     });
@@ -227,8 +236,12 @@ export class PaginationDirective implements OnInit {
 
     this.lastStartIndex = (this.currentPage - 1) * this.rulesPerPage;
 
+    //no order-1
+
+    //order-2
     this.setNoBtns(this.totalPages, this.currentPage);
 
+    //order-2
     if (this.searchTermsArray.length === 0) {
       this.sliceValues(this.OgValues);
     } else {
@@ -249,8 +262,25 @@ export class PaginationDirective implements OnInit {
   }
 
   onRulePerPageChange(e: any) {
-    const val = Number(e.target.dataset.value);
-    this.rulesPerPage = val;
+    const val = e.target.dataset.value || e.target.value;
+
+    if (!Number(val)) {
+      console.log('Page range is not a number', e);
+      return;
+    }
+
+    this.rulesPerPage = Number(val);
+
+    let values;
+
+    if (this.searchTermsArray.length == 0) {
+      values = this.OgValues;
+    } else {
+      values = this.searchResults;
+    }
+
+    //order-1
+    this.setTotalPages(values);
 
     // --
     //* we will need to update the pageNo on rulesPerPage change.
@@ -261,18 +291,16 @@ export class PaginationDirective implements OnInit {
       ),
       1
     );
+
+    console.log('c==', c);
     this.currentPage = c;
     // --
 
+    //order-2
     this.setNoBtns(this.totalPages, this.currentPage);
 
-    if (this.searchTermsArray.length == 0) {
-      this.setTotalPages(this.OgValues);
-      this.sliceValues(this.OgValues);
-    } else {
-      this.setTotalPages(this.searchResults);
-      this.sliceValues(this.searchResults);
-    }
+    //order-3
+    this.sliceValues(values);
   }
 
   // @HostListener('change', ['$event.target.value']) onChange(val: string) {

@@ -72,12 +72,14 @@ export class PaginationComponent implements OnInit {
 
   newRulesCB(val: any) {
     this.currentPage = val.currentPage;
-    this.numbers = val.numbers;
+    this.numbers = val.btnNosArr;
 
     this.rulesPerPage = val.rulesPerPage;
-    this.selectArr = val.selectArr;
-    this.onValuesChange.emit(val.values);
+    this.selectArr = val.newPageRangeArr;
+    this.onValuesChange.emit(val.valuesArr);
 
     console.log('asasas', this.currentPage);
+    console.log(val);
+    console.log(this.rulesPerPage);
   }
 }
