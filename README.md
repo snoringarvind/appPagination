@@ -17,8 +17,7 @@ npm i snoring-pagination
 <li>
 <h3>Add pagination directive to your div element</h3>
 
-```
-ruby
+```ruby
   <div
     class="pagination"
     snoringPagination
