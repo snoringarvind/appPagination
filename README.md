@@ -8,7 +8,6 @@
 
 ```
 npm i snoring-pagination
-
 ```
 
 <h2>How to use</h2>
@@ -25,7 +24,6 @@ npm i snoring-pagination
     #pagination="snoringPagination"
     >
   </div>
-
 ```
 
 </li>
@@ -41,7 +39,6 @@ npm i snoring-pagination
     [valuesArr]="values"
   >
 </div>
-
 ```
 
 <p>The <em>values</em> is your data variable.</p> 
@@ -64,7 +61,6 @@ npm i snoring-pagination
   <button class='page-last-btn' (click)='pagination.last()'>   >> </button>
 
 </div>
-
 ```
 
 </li>
@@ -99,7 +95,6 @@ npm i snoring-pagination
   <button class='page-last-btn' (click)='pagination.last()'> >> </button>
 
 </div>
-
 ```
 
 <p>The variables <em>currentPage</em> and <em>btnNosArr</em> we get from the call-back, which we will cover later.</p>
@@ -143,7 +138,6 @@ npm i snoring-pagination
   </div>
 
 </div>
-
 ```
 
 </li>
@@ -193,7 +187,6 @@ npm i snoring-pagination
   </div>
 
 </div>
-
 ```
 
 <p>The variable <em>selectArr</em> we get from the call-back, which we will cover later.</p>
@@ -212,13 +205,11 @@ npm i snoring-pagination
       this.selectArr = val.newPageRangeArr;
       this.slicedValues = val.valuesArr;
     }
-
 ```
 
 <h4>component.html</h4>
 
 ```
-
 <div
     class="pagination"
     snoringPagination
@@ -261,7 +252,6 @@ npm i snoring-pagination
   </div>
 
 </div>
-
 ```
 
 <p>The variable <em>slicedValues</em> contains our new sliced data for the respective page.</p>
@@ -272,7 +262,6 @@ npm i snoring-pagination
 <h4>component.ts</h4>
 
 ```
-
 searchTerms = new Subject<string>();
 
 search(term: string) {
@@ -296,7 +285,6 @@ debounceTime(300),
     );
 
 }
-
 ```
 
 <p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
@@ -305,13 +293,10 @@ debounceTime(300),
 <h4>component.html</h4>
 
 ```
-
 <div>
-  <input #searchBox (input)="search(searchBox.value)" />
+    <input #searchBox (input)="search(searchBox.value)" />
 </div>
-
 ```
 
 </li>
 </ol>
-```
