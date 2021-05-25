@@ -32,25 +32,18 @@
     <button (click)="pagination.next()" class="page-right-btn">></button>
     <button (click)="pagination.last()" class="page-forward-btn">>></button>
 
-    <div class="select-container" (click)="setShowSelect()">
-      <div class="page-value-container">
-        <div class="page-value">{{ rulesPerPage }}</div>
-        <div class="expand-btn">l</div>
-      </div>
-      <div *ngIf="showSelect" class="select">
-        <div
-          [attr.data-value]="[i]"
-          *ngFor="let i of selectArr"
-          (click)="pagination.onRulePerPageChange($event)"
-          [ngClass]="{
-            selected: rulesPerPage === i,
-            option: 'true'
-          }"
-        >
-          {{ i }}
-        </div>
-      </div>
-    </div>
+    <select (click)="pagination.onRulePerPageChange($event)">
+      <option
+        *ngFor="let i of selectArr"
+        [value]="[i]"
+        [ngClass]="{
+          selected: rulesPerPage === i,
+          option: 'true'
+        }"
+      >
+        {{ i }}
+      </option>
+    </select>
 
     <div>
       <input

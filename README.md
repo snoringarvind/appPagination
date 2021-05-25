@@ -76,9 +76,6 @@ npm i snoring-pagination
     [valuesArr]="values"
   >
 
-  <button class='page-first-btn' (click)='pagination.first()'> << </button>
-  <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
-
   <div *ngFor="let number of btnNosArr">
       <button
         (click)="pagination.OnClick(number, $event)"
@@ -90,9 +87,6 @@ npm i snoring-pagination
         {{ number }}
       </button>
   </div>
-
-  <button class='page-next-btn' (click)='pagination.next()'> > </button>
-  <button class='page-last-btn' (click)='pagination.last()'> >> </button>
 
 </div>
 ```
@@ -111,30 +105,13 @@ npm i snoring-pagination
     [valuesArr]="values"
   >
 
-  <button class='page-first-btn' (click)='pagination.first()'> << </button>
-  <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
-
-  <div *ngFor="let number of btnNosArr">
-      <button
-        (click)="pagination.OnClick(number, $event)"
-        [ngClass]="{
-          'active-page': currentPage === number,
-          'page-btn': true
-        }"
-      >
-        {{ number }}
-      </button>
-    </div>
-
-  <button class='page-next-btn' (click)='pagination.next()'> > </button>
-  <button class='page-last-btn' (click)='pagination.last()'> >> </button>
-
   <div>
     <input
       name="input"
       [ngModel]="currentPage"
       (keyup.enter)="pagination.change($event)"
       />
+
   </div>
 
 </div>
@@ -154,37 +131,18 @@ npm i snoring-pagination
     [pageRangeArr]="[5, 20, 30, 40, 50]"
   >
 
-  <button class='page-first-btn' (click)='pagination.first()'> << </button>
-  <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
-
-  <div *ngFor="let number of btnNosArr">
-      <button
-        (click)="pagination.OnClick(number, $event)"
-        [ngClass]="{
-          'active-page': currentPage === number,
-          'page-btn': true
-        }"
-      >
-        {{ number }}
-      </button>
-  </div>
-
-  <button class='page-next-btn' (click)='pagination.next()'> > </button>
-  <button class='page-last-btn' (click)='pagination.last()'> >> </button>
-
-  <select>
-    <option *ngFor='let i of selectArr'>
-      {{i}}
+  <select (click)="pagination.onRulePerPageChange($event)">
+    <option
+      *ngFor="let i of selectArr"
+      [value]="[i]"
+      [ngClass]="{
+      selected: rulesPerPage === i,
+      option: 'true'
+      }"
+    >
+      {{ i }}
     </option>
   </select>
-
-  <div>
-    <input
-      name="input"
-      [ngModel]="currentPage"
-      (keyup.enter)="pagination.change($event)"
-      />
-  </div>
 
 </div>
 ```
@@ -218,39 +176,6 @@ npm i snoring-pagination
     [pageRangeArr]="[5, 20, 30, 40, 50]"
     (newRules)="newRulesCB($event)"
   >
-
-<button class='page-first-btn' (click)='pagination.first()'> << </button>
-<button class='page-prev-btn' (click)='pagination.prev()'> < </button>
-
-  <div *ngFor="let number of btnNosArr">
-      <button
-        (click)="pagination.OnClick(number, $event)"
-        [ngClass]="{
-          'active-page': currentPage === number,
-          'page-btn': true
-        }"
-      >
-        {{ number }}
-      </button>
-    </div>
-
-<button class='page-next-btn' (click)='pagination.next()'> > </button>
-<button class='page-last-btn' (click)='pagination.last()'> >> </button>
-
-  <select>
-    <option *ngFor='let i of selectArr'>
-      {{i}}
-    </option>
-  </select>
-
-  <div>
-    <input
-      name="input"
-      [ngModel]="currentPage"
-      (keyup.enter)="pagination.change($event)"
-      />
-  </div>
-
 </div>
 ```
 
