@@ -9,7 +9,7 @@ npm i snoring-pagination
 
 <h2>How to use</h2>
 
-<ul>
+<ol>
 
 <li>
 <h3>Add pagination directive to your div element</h3>
@@ -190,9 +190,9 @@ npm i snoring-pagination
 <li>
 <h3>Adding a call-back function for new sliced values inside our respective component.ts file.</h3>
 
-<h2>component.ts file</h2>
+<h4>component.ts file</h4>
   
-  
+```
     newRulesCB(val: any) {
       this.currentPage = val.currentPage;
       this.btnNosArr = val.btnNosArr;
@@ -202,10 +202,13 @@ npm i snoring-pagination
       this.slicedValues = val.valuesArr;
     }
 
-  <h2>component.html</h2>
-  
-  
 ```
+
+<h4>component.html</h4>
+
+
+```
+
 <div
     class="pagination"
     snoringPagination
@@ -254,8 +257,9 @@ npm i snoring-pagination
 
 <li>
 <h3>Adding a search box to filter the data. (Optional)</h3>
-<h2>component.ts</h2>
+<h4>component.ts</h4>
 
+```
 searchTerms = new Subject<string>();
 
 search(term: string) {
@@ -279,17 +283,19 @@ debounceTime(300),
     );
 
 }
+```
 
 <p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
 <p>You can look more about creating search observables on <a href='https://angular.io/guide/practical-observable-usage'>Angular Documentation</a></p>
 
-<h2>component.html</h2>
+<h4>component.html</h4>
 
 ```
+
   <div>
     <input #searchBox (input)="search(searchBox.value)" />
   </div>
 ```
 
 </li>
-</ul>
+</ol>
