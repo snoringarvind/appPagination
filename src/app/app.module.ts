@@ -4,18 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PaginationDirective } from './pagination.directive';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SnoringPaginationDirective } from './snoring-pagination.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PaginationDirective,
-    PaginationComponent,
-    PaginationDirective,
-    SnoringPaginationDirective,
-  ],
+  declarations: [AppComponent, PaginationComponent, SnoringPaginationDirective],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

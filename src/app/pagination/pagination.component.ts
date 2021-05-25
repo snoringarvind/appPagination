@@ -16,7 +16,6 @@ import {
   switchMap,
   tap,
 } from 'rxjs/operators';
-import { NAMES } from '../mock-names';
 
 @Component({
   selector: 'app-pagination',
@@ -27,7 +26,7 @@ export class PaginationComponent implements OnInit {
   showSelect: boolean = false;
 
   selectArr: number[] = [];
-  numbers: number[] = [];
+  btnNosArr: number[] = [];
   rulesPerPage!: number;
   currentPage: number = 1;
 
@@ -72,7 +71,7 @@ export class PaginationComponent implements OnInit {
 
   newRulesCB(val: any) {
     this.currentPage = val.currentPage;
-    this.numbers = val.btnNosArr;
+    this.btnNosArr = val.btnNosArr;
 
     this.rulesPerPage = val.rulesPerPage;
     this.selectArr = val.newPageRangeArr;

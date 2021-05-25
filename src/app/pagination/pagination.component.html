@@ -17,7 +17,7 @@
     <button (click)="pagination.first()" class="page-backward-btn"><<</button>
     <button (click)="pagination.prev()" class="page-left-btn"><</button>
 
-    <div *ngFor="let number of numbers">
+    <div *ngFor="let number of btnNosArr">
       <button
         (click)="pagination.OnClick(number, $event)"
         [ngClass]="{
