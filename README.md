@@ -22,6 +22,7 @@ npm i snoring-pagination
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
+    style='color:blue;'
     >
   </div>
 ```
