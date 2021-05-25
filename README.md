@@ -5,7 +5,7 @@
 <p>This Angular directive is created using Angular 12+ .</p>
 
 <h2>How to install</h2>
-<code>npm i snoring-pagination</code>
+npm i snoring-pagination
 
 <h2>How to use</h2>
 
@@ -13,38 +13,38 @@
 
 <li>
 <h3>Add pagination directive to your div element</h3>
-<code>
+
 ```
   <div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
   >
-  
+
   </div>
 ```
-</code>
+
 </li>
 
 <li>
 <h3>Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.</h3>
-<code>
+
 ```<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
     [valuesArr]="values"
   >
-  
+
   </div>
 ```
-</code> 
+
 <p>The <em>values</em> is your data variable.</p> 
 </li>
 
 <li>
 <h3>Adding buttons to navigate forward and backward</h3>
-<code>
+
 ```<div
     class="pagination"
     snoringPagination
@@ -55,15 +55,15 @@
   <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
   <button class='page-next-btn' (click)='pagination.next()'>   > </button>
   <button class='page-last-btn' (click)='pagination.last()'>   >> </button>
-  
+
   </div>
 ```
-</code> 
+
 </li>
 
 <li>
 <h3>Adding clickable page number buttons and also highlighting the current page number.</h3>
-<code>
+
 ```<div
     class="pagination"
     snoringPagination
@@ -90,13 +90,13 @@
 
   </div>
 ```
-</code> 
+
 <p>The variables <em>currentPage</em> and <em>btnNosArr</em> we get from the call-back, which we will cover later.</p>
 </li>
 
 <li>
 <h3>Adding an input element to jump to the desired page number.</h3>
-<code>
+
 ```<div
     class="pagination"
     snoringPagination
@@ -131,12 +131,12 @@
 
   </div>
 ```
-</code> 
+
 </li>
 
 <li>
 <h3>Adding a  dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.</h3>
-<code>
+
 ```<div
     class="pagination"
     snoringPagination
@@ -178,7 +178,7 @@
 
   </div>
 ```
-</code>
+
 <p>The variable <em>selectArr</em> we get from the call-back, which we will cover later.</p>
 </li>
 
@@ -186,7 +186,7 @@
 <h3>Adding a call-back function for new sliced values inside our respective component.ts file.</h3>
 
 <h2>component.ts file</h2>
-  <code>
+  
   
     newRulesCB(val: any) {
       this.currentPage = val.currentPage;
@@ -197,11 +197,9 @@
       this.slicedValues = val.valuesArr;
     }
 
-  </code>
-
   <h2>component.html</h2>
   
-  <code>
+  
 ```<div
     class="pagination"
     snoringPagination
@@ -244,14 +242,14 @@
 
   </div>
 ```
-</code>
+
 <p>The variable <em>slicedValues</em> contains our new sliced data for the respective page.</p>
 </li>
 
 <li>
 <h3>Adding a search box to filter the data. (Optional)</h3>
 <h2>component.ts</h2>
-<code>
+
 searchTerms = new Subject<string>();
 
 search(term: string) {
@@ -275,19 +273,17 @@ debounceTime(300),
     );
 
 }
-</code>
 
 <p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
 <p>You can look more about creating search observables on <a href='https://angular.io/guide/practical-observable-usage'>Angular Documentation</a></p>
 
 <h2>component.html</h2>
-<code>
+
 ```
   <div>
     <input #searchBox (input)="search(searchBox.value)" />
   </div>
 ```
-</code>
 
 </li>
 </ul>
