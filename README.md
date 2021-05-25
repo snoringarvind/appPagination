@@ -22,7 +22,6 @@ npm i snoring-pagination
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
-    style='color:blue;'
     >
   </div>
 ```
@@ -32,7 +31,7 @@ npm i snoring-pagination
 <li>
 <h3>Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.</h3>
 
-```
+```ruby
 <div
     class="pagination"
     snoringPagination
@@ -48,7 +47,7 @@ npm i snoring-pagination
 <li>
 <h3>Adding buttons to navigate forward and backward</h3>
 
-```
+```ruby
 <div
     class="pagination"
     snoringPagination
@@ -69,7 +68,7 @@ npm i snoring-pagination
 <li>
 <h3>Adding clickable page number buttons and also highlighting the current page number.</h3>
 
-```
+```ruby
 <div
     class="pagination"
     snoringPagination
@@ -104,7 +103,7 @@ npm i snoring-pagination
 <li>
 <h3>Adding an input element to jump to the desired page number.</h3>
 
-```
+```ruby
 <div
     class="pagination"
     snoringPagination
@@ -146,7 +145,7 @@ npm i snoring-pagination
 <li>
 <h3>Adding a  dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.</h3>
 
-```
+```ruby
 <div
     class="pagination"
     snoringPagination
@@ -198,7 +197,7 @@ npm i snoring-pagination
 
 <h4>component.ts file</h4>
   
-```
+```ruby
     newRulesCB(val: any) {
       this.currentPage = val.currentPage;
       this.btnNosArr = val.btnNosArr;
@@ -210,7 +209,7 @@ npm i snoring-pagination
 
 <h4>component.html</h4>
 
-```
+```ruby
 <div
     class="pagination"
     snoringPagination
@@ -262,7 +261,7 @@ npm i snoring-pagination
 <h3>Adding a search box to filter the data. (Optional)</h3>
 <h4>component.ts</h4>
 
-```
+```ruby
 searchTerms = new Subject<string>();
 
 search(term: string) {
@@ -293,7 +292,7 @@ debounceTime(300),
 
 <h4>component.html</h4>
 
-```
+```ruby
 <div>
     <input #searchBox (input)="search(searchBox.value)" />
 </div>
