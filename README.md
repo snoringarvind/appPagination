@@ -5,7 +5,11 @@
 <p>This Angular directive is created using Angular 12+ .</p>
 
 <h2>How to install</h2>
+
+```
 npm i snoring-pagination
+
+```
 
 <h2>How to use</h2>
 
@@ -19,9 +23,9 @@ npm i snoring-pagination
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
-  >
-
+    >
   </div>
+
 ```
 
 </li>
@@ -36,8 +40,8 @@ npm i snoring-pagination
     #pagination="snoringPagination"
     [valuesArr]="values"
   >
+</div>
 
-  </div>
 ```
 
 <p>The <em>values</em> is your data variable.</p> 
@@ -53,12 +57,14 @@ npm i snoring-pagination
     #pagination="snoringPagination"
     [valuesArr]="values"
   >
+
   <button class='page-first-btn' (click)='pagination.first()'> << </button>
   <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
   <button class='page-next-btn' (click)='pagination.next()'>   > </button>
   <button class='page-last-btn' (click)='pagination.last()'>   >> </button>
 
-  </div>
+</div>
+
 ```
 
 </li>
@@ -73,6 +79,7 @@ npm i snoring-pagination
     #pagination="snoringPagination"
     [valuesArr]="values"
   >
+
   <button class='page-first-btn' (click)='pagination.first()'> << </button>
   <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
 
@@ -86,12 +93,13 @@ npm i snoring-pagination
       >
         {{ number }}
       </button>
-    </div>
-
-<button class='page-next-btn' (click)='pagination.next()'> > </button>
-<button class='page-last-btn' (click)='pagination.last()'> >> </button>
-
   </div>
+
+  <button class='page-next-btn' (click)='pagination.next()'> > </button>
+  <button class='page-last-btn' (click)='pagination.last()'> >> </button>
+
+</div>
+
 ```
 
 <p>The variables <em>currentPage</em> and <em>btnNosArr</em> we get from the call-back, which we will cover later.</p>
@@ -107,6 +115,7 @@ npm i snoring-pagination
     #pagination="snoringPagination"
     [valuesArr]="values"
   >
+
   <button class='page-first-btn' (click)='pagination.first()'> << </button>
   <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
 
@@ -122,18 +131,19 @@ npm i snoring-pagination
       </button>
     </div>
 
-<button class='page-next-btn' (click)='pagination.next()'> > </button>
-<button class='page-last-btn' (click)='pagination.last()'> >> </button>
+  <button class='page-next-btn' (click)='pagination.next()'> > </button>
+  <button class='page-last-btn' (click)='pagination.last()'> >> </button>
 
-<div>
-      <input
-        name="input"
-        [ngModel]="currentPage"
-        (keyup.enter)="pagination.change($event)"
+  <div>
+    <input
+      name="input"
+      [ngModel]="currentPage"
+      (keyup.enter)="pagination.change($event)"
       />
-    </div>
-
   </div>
+
+</div>
+
 ```
 
 </li>
@@ -149,6 +159,7 @@ npm i snoring-pagination
     [valuesArr]="values"
     [pageRangeArr]="[5, 20, 30, 40, 50]"
   >
+
   <button class='page-first-btn' (click)='pagination.first()'> << </button>
   <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
 
@@ -162,26 +173,27 @@ npm i snoring-pagination
       >
         {{ number }}
       </button>
-    </div>
-
-<button class='page-next-btn' (click)='pagination.next()'> > </button>
-<button class='page-last-btn' (click)='pagination.last()'> >> </button>
-
-<select>
-  <option *ngFor='let i of selectArr'>
-    {{i}}
-  </option>
-</select>
-
-<div>
-      <input
-        name="input"
-        [ngModel]="currentPage"
-        (keyup.enter)="pagination.change($event)"
-      />
-    </div>
-
   </div>
+
+  <button class='page-next-btn' (click)='pagination.next()'> > </button>
+  <button class='page-last-btn' (click)='pagination.last()'> >> </button>
+
+  <select>
+    <option *ngFor='let i of selectArr'>
+      {{i}}
+    </option>
+  </select>
+
+  <div>
+    <input
+      name="input"
+      [ngModel]="currentPage"
+      (keyup.enter)="pagination.change($event)"
+      />
+  </div>
+
+</div>
+
 ```
 
 <p>The variable <em>selectArr</em> we get from the call-back, which we will cover later.</p>
@@ -196,7 +208,6 @@ npm i snoring-pagination
     newRulesCB(val: any) {
       this.currentPage = val.currentPage;
       this.btnNosArr = val.btnNosArr;
-
       this.rulesPerPage = val.rulesPerPage;
       this.selectArr = val.newPageRangeArr;
       this.slicedValues = val.valuesArr;
@@ -205,7 +216,6 @@ npm i snoring-pagination
 ```
 
 <h4>component.html</h4>
-
 
 ```
 
@@ -217,8 +227,9 @@ npm i snoring-pagination
     [pageRangeArr]="[5, 20, 30, 40, 50]"
     (newRules)="newRulesCB($event)"
   >
-  <button class='page-first-btn' (click)='pagination.first()'> << </button>
-  <button class='page-prev-btn' (click)='pagination.prev()'>   <  </button>
+
+<button class='page-first-btn' (click)='pagination.first()'> << </button>
+<button class='page-prev-btn' (click)='pagination.prev()'> < </button>
 
   <div *ngFor="let number of btnNosArr">
       <button
@@ -235,21 +246,22 @@ npm i snoring-pagination
 <button class='page-next-btn' (click)='pagination.next()'> > </button>
 <button class='page-last-btn' (click)='pagination.last()'> >> </button>
 
-<select>
-  <option *ngFor='let i of selectArr'>
-    {{i}}
-  </option>
-</select>
+  <select>
+    <option *ngFor='let i of selectArr'>
+      {{i}}
+    </option>
+  </select>
 
-<div>
-      <input
-        name="input"
-        [ngModel]="currentPage"
-        (keyup.enter)="pagination.change($event)"
+  <div>
+    <input
+      name="input"
+      [ngModel]="currentPage"
+      (keyup.enter)="pagination.change($event)"
       />
-    </div>
-
   </div>
+
+</div>
+
 ```
 
 <p>The variable <em>slicedValues</em> contains our new sliced data for the respective page.</p>
@@ -260,6 +272,7 @@ npm i snoring-pagination
 <h4>component.ts</h4>
 
 ```
+
 searchTerms = new Subject<string>();
 
 search(term: string) {
@@ -283,6 +296,7 @@ debounceTime(300),
     );
 
 }
+
 ```
 
 <p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
@@ -292,10 +306,12 @@ debounceTime(300),
 
 ```
 
-  <div>
-    <input #searchBox (input)="search(searchBox.value)" />
-  </div>
+<div>
+  <input #searchBox (input)="search(searchBox.value)" />
+</div>
+
 ```
 
 </li>
 </ol>
+```
