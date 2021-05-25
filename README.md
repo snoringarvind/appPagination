@@ -29,7 +29,8 @@ npm i snoring-pagination
 <li>
 <h3>Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.</h3>
 
-```<div
+```
+<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
@@ -45,7 +46,8 @@ npm i snoring-pagination
 <li>
 <h3>Adding buttons to navigate forward and backward</h3>
 
-```<div
+```
+<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
@@ -64,7 +66,8 @@ npm i snoring-pagination
 <li>
 <h3>Adding clickable page number buttons and also highlighting the current page number.</h3>
 
-```<div
+```
+<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
@@ -97,7 +100,8 @@ npm i snoring-pagination
 <li>
 <h3>Adding an input element to jump to the desired page number.</h3>
 
-```<div
+```
+<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
@@ -137,7 +141,8 @@ npm i snoring-pagination
 <li>
 <h3>Adding a  dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.</h3>
 
-```<div
+```
+<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
@@ -200,7 +205,8 @@ npm i snoring-pagination
   <h2>component.html</h2>
   
   
-```<div
+```
+<div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
