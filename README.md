@@ -13,7 +13,7 @@
 
 <li>
 <h3>Add pagination directive to your div element</h3>
-<code>
+
 ```
   <div
     class="pagination"
@@ -23,7 +23,7 @@
   
   </div>
 ```
-</code>
+
 </li>
 
 <li>
