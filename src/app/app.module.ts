@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaginationDirective } from './pagination.directive';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SnoringPaginationDirective } from './snoring-pagination.directive';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     PaginationDirective,
     PaginationComponent,
     PaginationDirective,
+    SnoringPaginationDirective,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],

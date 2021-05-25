@@ -6,8 +6,8 @@
   <div><input [(ngModel)]="this.currentPage" /></div> -->
   <div
     class="pagination"
-    appPagination
-    #pagination="appPagination"
+    snoringPagination
+    #pagination="snoringPagination"
     (newRules)="newRulesCB($event)"
     [valuesArr]="names"
     [searchTerms]="searchTerms"
