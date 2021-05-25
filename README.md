@@ -17,15 +17,15 @@ npm i snoring-pagination
 <li>
 <h3>Add pagination directive to your div element</h3>
 
-<!-- ```
+```
+ruby
   <div
     class="pagination"
     snoringPagination
     #pagination="snoringPagination"
     >
   </div>
-``` -->
-<script src="https://gist.github.com/snoringarvind/65665b4a8aac38fcccfc6fb8934c2d43.js"></script>
+```
 
 </li>
 
