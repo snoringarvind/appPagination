@@ -1,6 +1,8 @@
 <h1>App Pagination</h1>
 <p>You can visulaize you data-sets via infinite scroll or in the form of pages. But since the data can easily get pretty huge for infinite scrolling, we can use pagination for such scenarios. This App Pagination directive helps you to create pages for your data. All you have to do is insert this directive in your template file and it returns a call-back with the current page number and sliced values. </p>
 
+<img src='https://www.dropbox.com/s/35rr7cglzw8cxsk/appPagination.png?dl=0'/>
+
 <h2>Angular Version</h2>
 <p>This Angular directive is created using Angular 12+ .</p>
 
@@ -189,7 +191,7 @@ npm i snoring-pagination
 <li>
 <h4>Adding a search box to filter the data. (Optional)</h4>
 <h5>component.ts</h5>
-<p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
+<p>Here we create Observables for searchTerms and searchObservable to pass the seach-term and the latest search filtered data inside the directive.</p>
 <p>You can look more about creating search observables on <a href='https://angular.io/guide/practical-observable-usage'>Angular Documentation</a></p>
 
 ```ruby

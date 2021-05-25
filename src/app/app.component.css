@@ -1,3 +1,8 @@
+.main-container {
+  margin: 50px auto 0 auto;
+  width: fit-content;
+}
+
 .table {
   display: flex;
   width: 300px;
@@ -24,6 +29,10 @@
 .pageno-input input {
   width: 30px;
   margin: 0 1px;
+}
+
+.pagination-container {
+  margin-top: 20px;
 }
 
 .pagination {
