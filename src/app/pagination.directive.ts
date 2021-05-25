@@ -328,6 +328,7 @@ export class PaginationDirective implements OnInit {
 
   change(el: any) {
     const val = el.target.value;
+
     if (!Number(val)) {
       return;
     } else if ([...val][0] === '+' || [...val][0] === '-') {
@@ -336,6 +337,7 @@ export class PaginationDirective implements OnInit {
 
     let pageno;
 
+    console.log(val);
     if (+val > this.totalPages) {
       pageno = this.totalPages;
     } else {
