@@ -1,5 +1,5 @@
-import { Component, OnChanges, OnInit, VERSION } from '@angular/core';
-import { AfterViewInit, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { DATA } from './mock-data';
@@ -25,11 +25,8 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit {
   constructor(private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    console.log(this.slicedNames);
     let x: any = DATA.split('\n');
     this.data = x;
-    console.log(this.data);
-    console.log(this.data.length);
 
     this.searchObservable = this.searchTerms.pipe(
       debounceTime(300),
@@ -70,9 +67,5 @@ export class AppComponent implements OnInit, OnChanges, AfterViewInit {
     this.rulesPerPage = val.rulesPerPage;
     this.selectArr = val.newPageRangeArr;
     this.slicedNames = val.valuesArr;
-
-    console.log('asasas', this.currentPage);
-    console.log(val);
-    console.log(this.rulesPerPage);
   }
 }

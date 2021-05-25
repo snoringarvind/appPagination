@@ -78,7 +78,6 @@ export class SnoringPaginationDirective {
       this.rulesPerPage = this.pageRange[0];
     }
     this.initOgValues(this.OgValues);
-    console.log(this.pageRange);
 
     if (this.searchTerms && this.searchObservable) {
       try {
@@ -181,8 +180,6 @@ export class SnoringPaginationDirective {
       }
     }
 
-    console.log('current pages', this.currentPage);
-
     this.newRules.emit({
       valuesArr: this.values,
       newPageRangeArr: this.selectArr,
@@ -255,9 +252,6 @@ export class SnoringPaginationDirective {
 
     this.values = val.slice(this.lastStartIndex, lastIndex);
 
-    console.log('start index==', this.lastStartIndex);
-    console.log('last index', lastIndex);
-
     this.setSelectArr();
   }
 
@@ -292,7 +286,6 @@ export class SnoringPaginationDirective {
       1
     );
 
-    console.log('c==', c);
     this.currentPage = c;
     // --
 
@@ -336,7 +329,6 @@ export class SnoringPaginationDirective {
 
     let pageno;
 
-    console.log(val);
     if (+val > this.totalPages) {
       pageno = this.totalPages;
     } else {

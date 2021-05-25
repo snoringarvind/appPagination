@@ -221,9 +221,178 @@ debounceTime(300),
 <h5>component.html</h5>
 
 ```ruby
-<div>
-    <input #searchBox (input)="search(searchBox.value)" />
+<div class="search-box">
+    <input
+      #searchBox
+      (input)="search(searchBox.value)"
+      placeholder="Search..."
+    />
+  </div>
+```
+
+</li>
+
+<li>
+<h4>The entire component.html file code is here.</h4>
+<h5>You just need to apply the directive to a div container and create a template refernce variable (#pagination) which points to the directive's instance.</h5>
+
+```ruby
+<div class="main-container">
+  <div class="search-box">
+    <input
+      #searchBox
+      (input)="search(searchBox.value)"
+      placeholder="Search..."
+    />
+  </div>
+
+  <div *ngIf="slicedNames.length == 0">No data</div>
+
+<ng-container *ngIf="slicedNames.length > 0">
+<div *ngFor="let name of slicedNames" class="table">
+<div class="sr-no">{{ data.indexOf(name) + 1 }}</div>
+<div class="name">{{ name }}</div>
 </div>
+</ng-container>
+
+  <!-- ---pagination-starts -->
+  <div class="pagination-container">
+    <div class="total-pages">
+      Total: <span> {{ data.length }} </span>
+    </div>
+
+    <div
+      class="pagination"
+      snoringPagination
+      #pagination="snoringPagination"
+      (newRules)="newRulesCB($event)"
+      [valuesArr]="data"
+      [searchTerms]="searchTerms"
+      [searchObservable]="searchObservable"
+      [pageRangeArr]="[10, 40, 30, 15, 17, 1000]"
+    >
+      <button (click)="pagination.first()" class="page-first-btn"><<</button>
+      <button (click)="pagination.prev()" class="page-prev-btn"><</button>
+
+      <div *ngFor="let number of btnNosArr">
+        <button
+          (click)="pagination.OnClick(number, $event)"
+          [ngClass]="{
+            'active-page': currentPage === number,
+            'page-btn': true
+          }"
+        >
+          {{ number }}
+        </button>
+      </div>
+
+      <div class="pageno-input">
+        <input
+          name="input"
+          [ngModel]="currentPage"
+          (keyup.enter)="pagination.change($event)"
+        />
+      </div>
+
+      <button (click)="pagination.next()" class="page-next-btn">></button>
+      <button (click)="pagination.last()" class="page-last-btn">>></button>
+
+      <select (click)="pagination.onRulePerPageChange($event)">
+        <option
+          *ngFor="let i of selectArr"
+          [value]="[i]"
+          [ngClass]="{
+            selected: rulesPerPage === i,
+            option: 'true'
+          }"
+        >
+          {{ i }}
+        </option>
+      </select>
+    </div>
+
+  </div>
+</div>
+```
+
+</li>
+
+<li>
+<h4>The entire component.ts file code is here</h4>
+<h5>In your component.ts file implement a callback function to receive the new sliced values and other details.</h5>
+
+```ruby
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { DATA } from './mock-data';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit, OnChanges, AfterViewInit {
+  title = 'pagination';
+  data!: any[];
+  slicedNames: any[] = [];
+  showSelect: boolean = false;
+
+  selectArr: number[] = [];
+  btnNosArr: number[] = [];
+  rulesPerPage!: number;
+  currentPage: number = 1;
+
+  searchObservable!: Observable<any>;
+
+  constructor(private cdRef: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    let x: any = DATA.split('\n');
+    this.data = x;
+
+    this.searchObservable = this.searchTerms.pipe(
+      debounceTime(300),
+
+      distinctUntilChanged(),
+      switchMap((term: string) => {
+        let fr: any = [];
+        this.data.filter((v: any, i: any) => {
+          if (v.toLocaleLowerCase().includes(term.toLocaleLowerCase())) {
+            fr.push(v);
+          }
+        });
+        return of(fr);
+      })
+    );
+  }
+
+  ngOnChanges() {}
+
+  onValuesChange(val: any[]) {
+    this.slicedNames = val;
+  }
+
+  ngAfterViewInit() {
+    this.cdRef.detectChanges();
+  }
+
+  searchTerms = new Subject<string>();
+
+  search(term: string) {
+    this.searchTerms.next(term);
+  }
+
+  newRulesCB(val: any) {
+    this.currentPage = val.currentPage;
+    this.btnNosArr = val.btnNosArr;
+
+    this.rulesPerPage = val.rulesPerPage;
+    this.selectArr = val.newPageRangeArr;
+    this.slicedNames = val.valuesArr;
+  }
+}
 ```
 
 </li>
