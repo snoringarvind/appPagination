@@ -1,9 +1,69 @@
-<div *ngFor="let name of slicedNames" class="table">
-  <div class="sr-no">{{ names.indexOf(name) + 1 }}</div>
-  <div class="name">{{ name }}</div>
+<div class="search-box">
+  <input #searchBox (input)="search(searchBox.value)" placeholder="Search..." />
 </div>
 
-<app-pagination
-  [names]="names"
-  (onValuesChange)="onValuesChange($event)"
-></app-pagination>
+<div *ngIf="slicedNames.length == 0">No data</div>
+
+<ng-container *ngIf="slicedNames.length > 0">
+  <div *ngFor="let name of slicedNames" class="table">
+    <div class="sr-no">{{ data.indexOf(name) + 1 }}</div>
+    <div class="name">{{ name }}</div>
+  </div>
+</ng-container>
+
+<!-- ---pagination-starts -->
+<div class="pagination-container">
+  <div class="total-pages">
+    Total: <span> {{ data.length }} </span>
+  </div>
+
+  <div
+    class="pagination"
+    snoringPagination
+    #pagination="snoringPagination"
+    (newRules)="newRulesCB($event)"
+    [valuesArr]="data"
+    [searchTerms]="searchTerms"
+    [searchObservable]="searchObservable"
+    [pageRangeArr]="[10, 40, 30, 15, 17, 1000]"
+  >
+    <button (click)="pagination.first()" class="page-first-btn"><<</button>
+    <button (click)="pagination.prev()" class="page-prev-btn"><</button>
+
+    <div *ngFor="let number of btnNosArr">
+      <button
+        (click)="pagination.OnClick(number, $event)"
+        [ngClass]="{
+          'active-page': currentPage === number,
+          'page-btn': true
+        }"
+      >
+        {{ number }}
+      </button>
+    </div>
+
+    <div class="pageno-input">
+      <input
+        name="input"
+        [ngModel]="currentPage"
+        (keyup.enter)="pagination.change($event)"
+      />
+    </div>
+
+    <button (click)="pagination.next()" class="page-next-btn">></button>
+    <button (click)="pagination.last()" class="page-last-btn">>></button>
+
+    <select (click)="pagination.onRulePerPageChange($event)">
+      <option
+        *ngFor="let i of selectArr"
+        [value]="[i]"
+        [ngClass]="{
+          selected: rulesPerPage === i,
+          option: 'true'
+        }"
+      >
+        {{ i }}
+      </option>
+    </select>
+  </div>
+</div>

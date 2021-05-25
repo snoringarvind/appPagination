@@ -15,7 +15,7 @@ npm i snoring-pagination
 <ol>
 
 <li>
-<h3>Add pagination directive to your div element</h3>
+<h4>Add pagination directive to your div element</h4>
 
 ```ruby
   <div
@@ -29,7 +29,9 @@ npm i snoring-pagination
 </li>
 
 <li>
-<h3>Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.</h3>
+<h4>Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.</h4>
+
+<p>The <em>values</em> is your data variable.</p>
 
 ```ruby
 <div
@@ -41,11 +43,10 @@ npm i snoring-pagination
 </div>
 ```
 
-<p>The <em>values</em> is your data variable.</p> 
 </li>
 
 <li>
-<h3>Adding buttons to navigate forward and backward</h3>
+<h4>Adding buttons to navigate forward and backward</h4>
 
 ```ruby
 <div
@@ -66,7 +67,9 @@ npm i snoring-pagination
 </li>
 
 <li>
-<h3>Adding clickable page number buttons and also highlighting the current page number.</h3>
+<h4>Adding clickable page number buttons and also highlighting the current page number.</h4>
+<p>Five clickable buttons are displayed with the curren page button in the middle.</p>
+<p>The variables <em>currentPage</em> and <em>btnNosArr</em> we get from the call-back, which we will cover later.</p>
 
 ```ruby
 <div
@@ -91,11 +94,10 @@ npm i snoring-pagination
 </div>
 ```
 
-<p>The variables <em>currentPage</em> and <em>btnNosArr</em> we get from the call-back, which we will cover later.</p>
 </li>
 
 <li>
-<h3>Adding an input element to jump to the desired page number.</h3>
+<h4>Adding an input element to jump to the desired page number.</h4>
 
 ```ruby
 <div
@@ -120,7 +122,9 @@ npm i snoring-pagination
 </li>
 
 <li>
-<h3>Adding a  dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.</h3>
+<h4>Adding a  dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.</h4>
+
+<p>The variable <em>selectArr</em> we get from the call-back, which we will cover later.</p>
 
 ```ruby
 <div
@@ -147,13 +151,12 @@ npm i snoring-pagination
 </div>
 ```
 
-<p>The variable <em>selectArr</em> we get from the call-back, which we will cover later.</p>
 </li>
 
 <li>
-<h3>Adding a call-back function for new sliced values inside our respective component.ts file.</h3>
+<h4>Adding a call-back function for new sliced values inside our respective component.ts file.</h4>
 
-<h4>component.ts file</h4>
+<h5>component.ts </h5>
   
 ```ruby
     newRulesCB(val: any) {
@@ -165,7 +168,9 @@ npm i snoring-pagination
     }
 ```
 
-<h4>component.html</h4>
+<h5>component.html</h5>
+
+<p>The variable <em>slicedValues</em> contains our new sliced data for the current page.</p>
 
 ```ruby
 <div
@@ -179,12 +184,13 @@ npm i snoring-pagination
 </div>
 ```
 
-<p>The variable <em>slicedValues</em> contains our new sliced data for the respective page.</p>
 </li>
 
 <li>
-<h3>Adding a search box to filter the data. (Optional)</h3>
-<h4>component.ts</h4>
+<h4>Adding a search box to filter the data. (Optional)</h4>
+<h5>component.ts</h5>
+<p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
+<p>You can look more about creating search observables on <a href='https://angular.io/guide/practical-observable-usage'>Angular Documentation</a></p>
 
 ```ruby
 searchTerms = new Subject<string>();
@@ -212,10 +218,7 @@ debounceTime(300),
 }
 ```
 
-<p>Here we create Observables for searchTerms to pass the seach-term and SearchObservable to pass the latest search request.</p>
-<p>You can look more about creating search observables on <a href='https://angular.io/guide/practical-observable-usage'>Angular Documentation</a></p>
-
-<h4>component.html</h4>
+<h5>component.html</h5>
 
 ```ruby
 <div>

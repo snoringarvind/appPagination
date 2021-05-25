@@ -1,4 +1,4 @@
-export const NAMES = `Abigail	North
+export const DATA = `Abigail	North
 Sarah	Fisher
 Phil	Morrison
 Frank	Graham
