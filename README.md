@@ -36,27 +36,29 @@ npm i snoring-pagination
 
 1. #### Add pagination directive to your div element
 
-- #### component.html
-  ```html
-  <div
-    class="pagination"
-    snoringPagination
-    #pagination="snoringPagination"
-  ></div>
-  ```
+   - #### component.html
+
+     ```html
+     <div
+       class="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
+     ></div>
+     ```
 
 1. #### Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.
 
 - #### component.html
   The _values_ is your data variable.
-  ```html
-  <div
-    class="pagination"
-    snoringPagination
-    #pagination="snoringPagination"
-    [valuesArr]="values"
-  ></div>
-  ```
+
+```html
+<div
+  class="pagination"
+  snoringPagination
+  #pagination="snoringPagination"
+  [valuesArr]="values"
+></div>
+```
 
 1. #### Adding buttons to navigate forward and backward
 
