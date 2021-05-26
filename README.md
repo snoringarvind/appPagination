@@ -4,33 +4,23 @@
 
 ![gif](https://github.com/snoringarvind/appPagination/blob/main/src/assets/pagination-record.gif)
 
-### Angular Version
-
-- This Angular directive is created using Angular 12+ .
-
-### How to install
-
-```
-npm i @snoringarvind/pagination
-```
-
 ### Set up
 
-- #### component.ts
+- #### module.ts
 
-  Import pagination in your module.ts file and add it to the imports[ ].
+Import pagination in your module.ts file and add it to the declrations[ ].
 
-  ```javascript
-  import { PaginationDirective } from "@snoringarvind/pagination";
+```javascript
+import { SnoringPaginationDirective } from "./snoring-pagination.directive";
 
-  @NgModule({
-    declarations: [AppComponent, PaginationDirective],
-    imports: [BrowserModule, FormsModule, AppRoutingModule],
-    providers: [],
-    bootstrap: [AppComponent],
-  })
-  export class AppModule {}
-  ```
+@NgModule({
+  declarations: [AppComponent, SnoringPaginationDirective],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
 ### How to use
 
@@ -38,7 +28,11 @@ npm i @snoringarvind/pagination
 
    - #### component.html
      ```html
-     <div class="pagination" pagination #pagination="pagination"></div>
+     <div
+       class="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
+     ></div>
      ```
 
 1. #### Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.
@@ -50,8 +44,8 @@ npm i @snoringarvind/pagination
      ```html
      <div
        class="pagination"
-       pagination
-       #pagination="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
        [valuesArr]="data"
      ></div>
      ```
@@ -62,8 +56,8 @@ npm i @snoringarvind/pagination
      ```html
      <div
        class="pagination"
-       pagination
-       #pagination="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
        [valuesArr]="data"
      >
        <button class="page-first-btn" (click)="pagination.first()"><<</button>
@@ -84,8 +78,8 @@ npm i @snoringarvind/pagination
      ```html
      <div
        class="pagination"
-       pagination
-       #pagination="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
        [valuesArr]="data"
      >
        <div *ngFor="let number of btnNosArr">
@@ -108,8 +102,8 @@ npm i @snoringarvind/pagination
      ```html
      <div
        class="pagination"
-       pagination
-       #pagination="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
        [valuesArr]="data"
      >
        <div class="pageno-input">
@@ -132,8 +126,8 @@ npm i @snoringarvind/pagination
      ```html
      <div
        class="pagination"
-       pagination
-       #pagination="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
        [valuesArr]="data"
        [pageRangeArr]="[5, 20, 30, 40, 50]"
      >
@@ -175,8 +169,8 @@ npm i @snoringarvind/pagination
      ```html
      <div
        class="pagination"
-       pagination
-       #pagination="pagination"
+       snoringPagination
+       #pagination="snoringPagination"
        [valuesArr]="data"
        [pageRangeArr]="[5, 20, 30, 40, 50]"
        (newRules)="newRulesCB($event)"
@@ -257,8 +251,8 @@ npm i @snoringarvind/pagination
 
        <div
          class="pagination"
-         pagination
-         #pagination="pagination"
+         snoringPagination
+         #pagination="snoringPagination"
          (newRules)="newRulesCB($event)"
          [valuesArr]="data"
          [searchTerms]="searchTerms"
