@@ -2,6 +2,8 @@
 
 - An Angular directive for pagination.
 
+![gif](https://github.com/snoringarvind/appPagination/blob/main/src/assets/pagination-record.gif)
+
 ## Angular Version
 
 - This Angular directive is created using Angular 12+ .
