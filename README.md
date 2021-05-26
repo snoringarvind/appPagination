@@ -46,9 +46,7 @@ npm i snoring-pagination
 - ### Pass your [data] on which you want to implement your pagination. The data should be in the form of an array.
 
   - #### component.html
-
     The _values_ is your data variable.
-
     ```html
     <div
       class="pagination"
@@ -61,7 +59,6 @@ npm i snoring-pagination
 - ### Adding buttons to navigate forward and backward
 
   - #### component.html
-
     ```html
     <div
       class="pagination"
@@ -79,10 +76,8 @@ npm i snoring-pagination
 - ### Adding clickable page number buttons and also highlighting the current page number.
 
   - #### component.html
-
     Five clickable buttons are displayed with the curren page button in the middle.
     The variables _currentPage_ and _btnNosArr_ we get from the call-back, which we will cover later.
-
     ```html
     <div
       class="pagination"
@@ -107,7 +102,6 @@ npm i snoring-pagination
 - ### Adding an input element to jump to the desired page number.
 
   - #### component.html
-
     ```html
     <div
       class="pagination"
@@ -128,9 +122,7 @@ npm i snoring-pagination
 - ### Adding a dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.
 
   - #### component.html
-
     The variable _selectArr_ we get from the call-back, which we will cover later.
-
     ```html
     <div
       class="pagination"
