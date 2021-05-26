@@ -35,7 +35,6 @@ npm i snoring-pagination
 - #### Add pagination directive to your div element
 
   - #### component.html
-
     ```html
     <div
       class="pagination"
