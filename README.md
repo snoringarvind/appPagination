@@ -8,7 +8,7 @@
 
 - #### module.ts
 
-  Import pagination in your module.ts file and add it to the declrations[ ].
+  Import pagination in your module.ts file and add it to the declarations[ ].
 
   ```javascript
   import { SnoringPaginationDirective } from "./snoring-pagination.directive";
