@@ -80,8 +80,10 @@ npm i snoring-pagination
 1. #### Adding clickable page number buttons and also highlighting the current page number.
 
    - #### component.html
+
      Five clickable buttons are displayed with the curren page button in the middle.
      The variables _currentPage_ and _btnNosArr_ we get from the call-back, which we will cover later.
+
      ```html
      <div
        class="pagination"
@@ -126,7 +128,9 @@ npm i snoring-pagination
 1. #### Adding a dropdown to select the number of data-values on each page. The default selection is [5, 10, 25, 50 ,100, 250, 500] but you can also pass your own selection range.
 
    - #### component.html
+
      The variable _selectArr_ we get from the call-back, which we will cover later.
+
      ```html
      <div
        class="pagination"
