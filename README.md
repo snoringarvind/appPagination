@@ -1,6 +1,7 @@
 <h1>App Pagination</h1>
 
-<h2>An Angular directive for pagination.</h2>
+<h2>Description</h2>
+<p>An Angular directive for pagination.</p>
 
 <h2>Angular Version</h2>
 <p>This Angular directive is created using Angular 12+ .</p>
