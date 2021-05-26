@@ -1,4 +1,6 @@
 <h1>App Pagination</h1>
+
+<h2>Description</h2>
 <p>You can visulaize you data-sets via infinite scroll or in the form of pages. But since the data can easily get pretty huge for infinite scrolling, we can use pagination for such scenarios. This App Pagination directive helps you to create pages for your data. All you have to do is insert this directive in your template file and it returns a call-back with the current page number and sliced values. </p>
 
 <h2>Angular Version</h2>
@@ -17,7 +19,7 @@ npm i snoring-pagination
 <li>
 <h4>Add pagination directive to your div element</h4>
 
-```ruby
+```javascript
   <div
     class="pagination"
     snoringPagination
@@ -33,7 +35,7 @@ npm i snoring-pagination
 
 <p>The <em>values</em> is your data variable.</p>
 
-```ruby
+```javascript
 <div
     class="pagination"
     snoringPagination
@@ -48,7 +50,7 @@ npm i snoring-pagination
 <li>
 <h4>Adding buttons to navigate forward and backward</h4>
 
-```ruby
+```javascript
 <div
     class="pagination"
     snoringPagination
@@ -71,7 +73,7 @@ npm i snoring-pagination
 <p>Five clickable buttons are displayed with the curren page button in the middle.</p>
 <p>The variables <em>currentPage</em> and <em>btnNosArr</em> we get from the call-back, which we will cover later.</p>
 
-```ruby
+```javascript
 <div
     class="pagination"
     snoringPagination
@@ -99,7 +101,7 @@ npm i snoring-pagination
 <li>
 <h4>Adding an input element to jump to the desired page number.</h4>
 
-```ruby
+```javascript
 <div
     class="pagination"
     snoringPagination
@@ -126,7 +128,7 @@ npm i snoring-pagination
 
 <p>The variable <em>selectArr</em> we get from the call-back, which we will cover later.</p>
 
-```ruby
+```javascript
 <div
     class="pagination"
     snoringPagination
@@ -158,7 +160,7 @@ npm i snoring-pagination
 
 <h5>component.ts </h5>
   
-```ruby
+```javascript
     newRulesCB(val: any) {
       this.currentPage = val.currentPage;
       this.btnNosArr = val.btnNosArr;
@@ -172,7 +174,7 @@ npm i snoring-pagination
 
 <p>The variable <em>slicedValues</em> contains our new sliced data for the current page.</p>
 
-```ruby
+```javascript
 <div
     class="pagination"
     snoringPagination
@@ -192,7 +194,7 @@ npm i snoring-pagination
 <p>Here we create Observables for searchTerms and searchObservable to pass the seach-term and the latest search filtered data inside the directive.</p>
 <p>You can look more about creating search observables on <a href='https://angular.io/guide/practical-observable-usage'>Angular Documentation</a></p>
 
-```ruby
+```javascript
 searchTerms = new Subject<string>();
 
 search(term: string) {
@@ -220,7 +222,7 @@ debounceTime(300),
 
 <h5>component.html</h5>
 
-```ruby
+```javascript
 <div class="search-box">
     <input
       #searchBox
@@ -236,7 +238,7 @@ debounceTime(300),
 <h4>The entire component.html file code is here.</h4>
 <h5>You just need to apply the directive to a div container and create a template refernce variable (#pagination) which points to the directive's instance.</h5>
 
-```ruby
+```javascript
 <div class="main-container">
   <div class="search-box">
     <input
@@ -317,11 +319,11 @@ debounceTime(300),
 
 </li>
 
-<li>
+<li>                                                                                              
 <h4>The entire component.ts file code is here</h4>
 <h5>In your component.ts file implement a callback function to receive the new sliced values and other details.</h5>
 
-```ruby
+```javascript
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
