@@ -8,19 +8,19 @@
 
 - #### module.ts
 
-Import pagination in your module.ts file and add it to the declrations[ ].
+  Import pagination in your module.ts file and add it to the declrations[ ].
 
-```javascript
-import { SnoringPaginationDirective } from "./snoring-pagination.directive";
+  ```javascript
+  import { SnoringPaginationDirective } from "./snoring-pagination.directive";
 
-@NgModule({
-  declarations: [AppComponent, SnoringPaginationDirective],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
+  @NgModule({
+    declarations: [AppComponent, SnoringPaginationDirective],
+    imports: [BrowserModule, FormsModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
+  })
+  export class AppModule {}
+  ```
 
 ### How to use
 
